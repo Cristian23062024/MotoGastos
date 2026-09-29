@@ -1,0 +1,6 @@
+{
+  "name": "MotoGastos - AI Motorcycle Telemetry & Cost Projection",
+  "description": "Smart motorcycle scanner with AI telemetry, technical specs diagnostic, and annual cost projections in Colombia. Supports dark mode, multi-device view, and English, Spanish, Japanese.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
