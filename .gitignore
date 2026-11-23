@@ -1,8 +1,50 @@
-node_modules/
-build/
-dist/
-coverage/
-.DS_Store
-*.log
-.env*
+# Secretos / variables de entorno
+.env
+.env.*
 !.env.example
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+lib/generated_plugin_registrant.dart
+
+# Android
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/key.properties
+**/android/**/gradle-wrapper.jar
+**/android/**/GeneratedPluginRegistrant.java
+*.jks
+*.keystore
+
+# iOS
+**/ios/**/Pods/
+**/ios/**/.symlinks/
+**/ios/**/DerivedData/
+**/ios/**/xcuserdata
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# Node / Vite (prototipo web en src/)
+node_modules/
+dist/
+*.log
+
+# IDE y herramientas locales
+.idea/
+*.iml
+.vscode/
+.mcp.json
+graphify-out/
+.DS_Store
