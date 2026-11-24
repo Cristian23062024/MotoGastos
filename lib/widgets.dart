@@ -14,11 +14,10 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         width: size,
         height: size,
+        padding: EdgeInsets.all(size * 0.12),
         decoration: BoxDecoration(color: AppColors.surfaceHigh, borderRadius: BorderRadius.circular(size * 0.2)),
-        child: Stack(alignment: Alignment.center, children: [
-          Icon(Icons.crop_free, size: size * 0.8, color: AppColors.onSurface),
-          Icon(Icons.two_wheeler, size: size * 0.45, color: AppColors.orange),
-        ]),
+        // Mismo logo que el ícono de la app y el splash (assets/logo/).
+        child: Image.asset('assets/logo/logo.png', semanticLabel: 'MotoGastos'),
       );
 }
 
