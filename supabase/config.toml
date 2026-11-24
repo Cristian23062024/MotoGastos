@@ -1,0 +1,6 @@
+# Solo lo necesario; el resto usa los valores por defecto de la CLI.
+project_id = "motogastos"
+
+# La llama pg_cron con la secret key (auth: "secret"), no con un JWT de usuario.
+[functions.sync-pico-placa]
+verify_jwt = false

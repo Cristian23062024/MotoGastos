@@ -36,10 +36,17 @@ lib/generated_plugin_registrant.dart
 **/ios/Flutter/Flutter.framework
 **/ios/Runner/GeneratedPluginRegistrant.*
 
-# Node / Vite (prototipo web en src/)
+# Supabase CLI
+supabase/.temp/
+supabase/.branches/
+
+# Node: no hace falta para compilar (las Edge Functions importan con npm:);
+# package.json solo lo usan las skills locales de los agentes.
 node_modules/
 dist/
 *.log
+/package.json
+/package-lock.json
 
 # IDE y herramientas locales
 .idea/
@@ -48,3 +55,12 @@ dist/
 .mcp.json
 graphify-out/
 .DS_Store
+
+# Agentes de IA y sus skills instaladas localmente
+.claude/
+.agents/
+skills-lock.json
+
+# Mockups de diseño (no se usan en la compilación)
+Diseño/
+claude.md
