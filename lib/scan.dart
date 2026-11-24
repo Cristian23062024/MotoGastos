@@ -99,6 +99,27 @@ String formatCop(int value) {
 String formatDate(DateTime d) =>
     '${d.day.toString().padLeft(2, '0')}/${d.month.toString().padLeft(2, '0')}/${d.year}';
 
+const _meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+/// "15 Jun 2025".
+String formatDateShort(DateTime d) => '${d.day} ${_meses[d.month - 1]} ${d.year}';
+
+/// "Hoy, 14:32", "Ayer, 18:15", "12 Oct, 10:05" (con año si no es el actual).
+String formatRelative(DateTime d, {DateTime? now}) {
+  now ??= DateTime.now();
+  final hora = '${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
+  final dias = DateTime(now.year, now.month, now.day).difference(DateTime(d.year, d.month, d.day)).inDays;
+  if (dias == 0) return 'Hoy, $hora';
+  if (dias == 1) return 'Ayer, $hora';
+  return '${d.day} ${_meses[d.month - 1]}${d.year == now.year ? '' : ' ${d.year}'}, $hora';
+}
+
+/// Días calendario desde hoy hasta [vence] (negativo si ya venció).
+int diasHasta(DateTime vence, {DateTime? now}) {
+  now ??= DateTime.now();
+  return DateTime(vence.year, vence.month, vence.day).difference(DateTime(now.year, now.month, now.day)).inDays;
+}
+
 String? _isoDate(DateTime? d) => d?.toIso8601String().substring(0, 10);
 
 String _mimeType(XFile file) {

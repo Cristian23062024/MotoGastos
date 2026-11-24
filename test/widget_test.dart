@@ -31,4 +31,19 @@ void main() {
     expect(formatCop(1234567), '\$ 1.234.567');
     expect(formatCop(-50000), '-\$ 50.000');
   });
+
+  test('formatRelative: hoy, ayer, mismo año y otro año', () {
+    final now = DateTime(2026, 11, 23, 20);
+    expect(formatRelative(DateTime(2026, 11, 23, 14, 32), now: now), 'Hoy, 14:32');
+    expect(formatRelative(DateTime(2026, 11, 22, 18, 5), now: now), 'Ayer, 18:05');
+    expect(formatRelative(DateTime(2026, 10, 12, 10, 5), now: now), '12 Oct, 10:05');
+    expect(formatRelative(DateTime(2025, 1, 2, 9, 0), now: now), '2 Ene 2025, 09:00');
+  });
+
+  test('diasHasta cuenta días calendario y es negativo si venció', () {
+    final now = DateTime(2026, 11, 23, 23, 59);
+    expect(diasHasta(DateTime(2026, 11, 24), now: now), 1);
+    expect(diasHasta(DateTime(2026, 11, 23), now: now), 0);
+    expect(diasHasta(DateTime(2026, 11, 20), now: now), -3);
+  });
 }

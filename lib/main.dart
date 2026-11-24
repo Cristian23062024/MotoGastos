@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'scan.dart';
+import 'theme.dart';
 import 'notifications.dart';
 import 'screens/login_screen.dart';
 import 'screens/shell.dart';
@@ -39,12 +40,10 @@ class MotoGastosApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final seed = Colors.deepOrange;
     return MaterialApp(
       title: 'MotoGastos',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorSchemeSeed: seed),
-      darkTheme: ThemeData(colorSchemeSeed: seed, brightness: Brightness.dark),
+      theme: buildTheme(), // diseño "Apex Telemetry": solo tema oscuro
       home: StreamBuilder<AuthState>(
         stream: supabase.auth.onAuthStateChange,
         builder: (context, _) =>

@@ -16,13 +16,13 @@ App móvil para motociclistas en Colombia (Android e iOS). Le tomas una foto a u
   - Pico y placa a las 6:00 a. m. del día en que le toca a tu moto.
   - SOAT y técnico-mecánica a las 9:00 a. m., una semana antes del vencimiento.
 - **Acceso sin contraseña:** enlace mágico al correo, Google o GitHub.
-- Interfaz Material 3 en español, con modo claro y oscuro según el sistema.
+- Interfaz oscura basada en el sistema de diseño *Apex Telemetry* (naranja de carreras, verde lima y las tipografías Space Grotesk, Inter y JetBrains Mono), con visor de cámara propio.
 
 ## Tecnologías
 
 | Capa | Tecnología |
 |---|---|
-| App móvil | Flutter (Dart), Material 3 |
+| App móvil | Flutter (Dart), Material 3, `camera`, `google_fonts` |
 | Autenticación | Supabase Auth: magic link y OAuth con Google y GitHub |
 | Base de datos | Supabase Postgres con Row Level Security |
 | Backend | Supabase Edge Functions (Deno) |
@@ -162,12 +162,15 @@ lib/
 ├── scan.dart              Modelo Scan y llamadas a Supabase (analizar, listar, mi moto, borrar)
 ├── pico_placa.dart        Calendario de pico y placa por ciudad
 ├── notifications.dart     Programación de avisos locales
+├── theme.dart             Colores, tipografías y tema oscuro (Apex Telemetry)
+├── widgets.dart           Cabecera, menú de cuenta, píldoras de estado y otros componentes
 └── screens/
     ├── login_screen.dart        Magic link, Google y GitHub
-    ├── shell.dart               Navegación inferior y menú de cuenta (cerrar sesión)
-    ├── home_screen.dart         Historial y botones de cámara/galería
-    ├── scan_detail_screen.dart  Costos, ficha técnica y formulario "Mi moto"
-    └── pico_placa_screen.dart   Restricción por ciudad
+    ├── shell.dart               Navegación inferior de 4 pestañas
+    ├── listado_screen.dart      Historial con búsqueda por modelo o placa
+    ├── escanear_screen.dart     Visor de cámara, galería y flash
+    ├── gastos_screen.dart       Costo anual, ficha técnica y formulario "Mi moto"
+    └── pico_placa_screen.dart   Restricción por ciudad y vencimientos de SOAT/RTM
 supabase/
 ├── config.toml            Configuración de funciones (verify_jwt)
 ├── migrations/            Esquema de la base de datos, seguridad (RLS) y cron
